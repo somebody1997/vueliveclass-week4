@@ -1,0 +1,48 @@
+body {
+  background-color: #F5F5F5;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  background-color: #fff;
+  border-radius: 15px;
+  -webkit-box-shadow: 5px 10px 30px #DCDCDC;
+          box-shadow: 5px 10px 30px #DCDCDC;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.imgBlock {
+  width: 60%;
+}
+
+.inputBlock {
+  width: 40%;
+}
+
+.imgBlock {
+  background-size: cover;
+  background-position: center;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  padding: 40px;
+}
+
+.inputBlock {
+  padding: 80px;
+}
+/*# sourceMappingURL=login.css.map */
