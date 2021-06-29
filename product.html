@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+</head>
+<body>
+  <header class="header">
+    <nav class="navbar navbar-expand-lg px-4 py-2 bg-white shadow">
+      <a class="sidebar-toggler text-gray-500 me-4 me-lg-5 lead" href="#"><i class="fas fa-align-left"></i></a>
+      <a class="navbar-brand fw-bold text-uppercase text-base" href="#">
+        <span class="d-none d-sm-inline">Product</span>
+        <span class="d-none d-sm-inline">List</span>
+      </a>
+    </nav>
+  </header>
+
+  <div id="app">
+    <div class="container">
+      <div class="text-end mt-4">
+        <button class="btn btn-primary" @click="openModal(true)">
+          建立新的產品
+        </button>
+      </div>
+      <table class="table mt-4">
+        <thead>
+          <tr>
+            <th width="120">
+              分類
+            </th>
+            <th>產品名稱</th>
+            <th width="120">
+              原價
+            </th>
+            <th width="120">
+              售價
+            </th>
+            <th width="100">
+              是否啟用
+            </th>
+            <th width="120">
+              編輯
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="product in products" :key="product.id">
+            <td>{{ product.category }}</td>
+            <td>{{ product.title }}</td>
+            <td>{{ product.origin_price }}</td>
+            <td>{{ product.price }}</td>
+            <td>
+              <span class="text-success" v-if="product.is_enabled">啟用</span>
+              <span v-else>未啟用</span>
+            </td>
+            <td>
+              <button type="button" class="btn btn-outline-primary btn-sm" data-id="${product.id}" @click="openModal(false, product)">
+                編輯
+              </button>
+              <button type="button" class="btn btn-sm btn-outline-danger move deleteBtn" data-action="remove"
+                data-id="${product.id}" @click="deleteProductModal(product)"> 
+                刪除 
+              </button>
+            </td>
+          </tr> 
+        </tbody>
+      </table>
+    </div>
+    <div class="d-flex justify-content-center mt-5">
+      <pagination :page="pagination" @get-product="getProduct"></pagination>
+    </div>
+    <!-- Modal -->
+    <product-modal-com :temp-product="tempProduct" @update-product="updateProduct" :image="image"></product-modal-com>
+    <del-modal-com @del-product="delProduct"></del-modal-com>
+    <!-- Modal -->
+  </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.9.1/axios.min.js'
+    integrity='sha512-Xk3wWei2TGrsh9kDSBKUMIjw/86sLUvhtnv9f7fOuIwhhiUTKz8szkWkzHthrM5Bb3Bu9idSzkxOrkzhcneuiw=='
+    crossorigin='anonymous'></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+    integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+    integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+  <!-- <script src="https://unpkg.com/vue@next"></script> -->
+  <script src="./js/product.js" type="module"></script>
+</body>
+</html>
