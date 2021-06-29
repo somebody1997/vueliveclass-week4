@@ -24,7 +24,6 @@ const app = createApp({
   methods: {
     init() {
       const token = document.cookie.replace(/(?:(?:^|.*;\s*)myToken\s*\=\s*([^;]*).*$)|^.*$/, "$1")
-      // console.log(token)
       axios.defaults.headers.common['Authorization'] = token
     },
     getProduct (page = 1) {
