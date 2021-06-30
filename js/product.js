@@ -72,15 +72,17 @@ const app = createApp({
       this.tempProduct = {...item}
     },
     delProduct () {
-      axios.delete(`${url}/api/${this.path}/admin/product/${this.tempProduct.id}`)
-        .then(res => {
-          if(res.data.success) {
-            this.getProduct()
-            delProductModal.hide()
-            alert(res.data.message);
-          }
-        })
-        .catch(err => console.log(err))
+      axios.delete(`${url}/api/${path}/admin/product/${this.tempProduct.id}`)
+      .then(res => {
+        if(res.data.success) {
+          this.getProduct()
+          delProductModal.hide()
+          alert(`已刪除 ${this.tempProduct.title} 商品 `);
+        }else{
+          alert(res.data.message);
+        }
+      })
+      .catch(err => console.log(err))
     }
   },
   components: { 
