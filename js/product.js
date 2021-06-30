@@ -3,8 +3,8 @@ import pagination from '../components/pagination.js'
 import productModalCom from '../components/productModal.js'
 import delModalCom from '../components/delModal.js'
 
-const url = "https://vue3-course-api.hexschool.io"
-const path = "vueliveclass"
+const url = 'https://vue3-course-api.hexschool.io'
+const path = 'vueliveclass'
 
 let productModal = {}
 let delProductModal = {}
