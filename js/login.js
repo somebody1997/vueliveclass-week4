@@ -14,7 +14,7 @@ const app = Vue.createApp({
     login () {
       axios.post(`${url}/admin/signin`, this.data)
         .then(res => {
-            if(res.data.success === true) {
+            if(res.data.success) {
             const { token, expired } = res.data
             document.cookie = `hexToken = ${token}; expires = ${new Date(expired)}`
             this.init()
@@ -30,7 +30,7 @@ const app = Vue.createApp({
         .catch(err => console.log(err))
   },
   init () {
-      const token = document.cookie.replace(/(?:(?:^|.*;\s*)myToken\s*\=\s*([^;]*).*$)|^.*$/, "$1")
+      const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
       console.log(token)
       axios.defaults.headers.common['Authorization'] = token
     }

@@ -18,9 +18,9 @@
         <h1 class="h3 mb-3 fw-normal">請先登入</h1>
           <form id="form" class="form-signin" @submit.prevent="login">
             <div>
-              <label for="inputEmail" class="visually-hidden">Email address</label>
+              <label for="username" class="visually-hidden">Email address</label>
               <input type="email" class="form-control" id="username" placeholder="name@example.com" required autofocus v-model="data.username">
-              <label for="inputPassword" class="visually-hidden">Password</label>
+              <label for="password" class="visually-hidden">Password</label>
               <input type="password" class="form-control" id="password" placeholder="Password" required v-model='data.password'>   
               <div class="checkbox mb-3">
               </div>
